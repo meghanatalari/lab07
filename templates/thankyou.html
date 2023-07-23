@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thankyou</title>
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+        }
+
+        div.registered {
+            background-color: whitesmoke;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="registered">
+        <img src="{{ url_for('static', filename='registered.png') }}" width="50px" alt="Registered User">
+        <h1>Thanks for registering!</h1>
+        <p><a href="{{ url_for('signin') }}">Click here</a> to sign in to your account now.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        h1, form, p {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input {
+            padding: 5px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 7px;
+            margin: 5px;
+            background-color: rgb(40, 168, 68);
+            border: none;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        div.sign-in {
+            background-color: rgb(98, 116, 138, 1);
+            color: white;
+            width: 300px;
+        }
+
+        div.registration {
+            background-color: whitesmoke;
+            margin: auto;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Register</h1>
+    <p>Create your account. It's free and only takes a minute.</p>
+    
+    <div class="registration">
+    <form onsubmit="validatePassword();" method="post">
+        <input style="margin-top: 20px;" type="text" name="first-name" placeholder="First Name" >
+        <input type="text" name="last-name" placeholder="last Name" >
+        <input type="email" name="email" placeholder="Email" >
+        <input type="password" name="password" placeholder="Password" >
+        <input type="password" name="confirm-password" placeholder="Confirm Password" >
+        <button type="submit">Register Now</button>
+        <div class="sign-in">
+            <p>Already have an account? <a href="{{ url_for('signin') }}">Sign In</a></p>
+        </div>
+    </form>
+    </div>
+    <script>
+        function validatePassword() {
+        const password = document.querySelector('input[name=password]').value;    
+        console.log(password);
+        const uppercaseRegex = /[A-Z]/;
+        const lowercaseRegex = /[a-z]/;
+        const lastCharacterRegex = /\d$/;
+
+        const hasUppercase = uppercaseRegex.test(password);
+        const hasLowercase = lowercaseRegex.test(password);
+        const hasLastNumber = lastCharacterRegex.test(password);
+        const hasValidLength = password.length >= 8;
+
+        const isValid = hasUppercase && hasLowercase && hasLastNumber && hasValidLength;
+        if(isValid)
+            window.location.href = "report.html";
+        else
+            alert('Weak password! Try Again');
+        }
+    </script>
+</body>
+</html>
